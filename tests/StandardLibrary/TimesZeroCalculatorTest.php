@@ -11,7 +11,7 @@ class TimesZeroCalculatorTest extends TestCase
     /** @test */
     public function it_describes_itself()
     {
-        $calculator = new TimesZeroCalculator;
+        $calculator = new TimesZeroCalculator();
 
         $this->assertEquals('Returns the input multiplied by zero, useful.', $calculator->describe());
     }
@@ -19,7 +19,7 @@ class TimesZeroCalculatorTest extends TestCase
     /** @test */
     public function it_returns_the_expected_result()
     {
-        $calculator = new TimesZeroCalculator;
+        $calculator = new TimesZeroCalculator();
 
         $result = $calculator->calculate(34);
 
@@ -32,7 +32,7 @@ class TimesZeroCalculatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Nothing was passed to the calculator');
 
-        $calculator = new TimesZeroCalculator;
+        $calculator = new TimesZeroCalculator();
 
         $result = $calculator->calculate();
 
@@ -45,7 +45,7 @@ class TimesZeroCalculatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Calculator was expecting 1 but got 3');
         
-        $calculator = new TimesZeroCalculator;
+        $calculator = new TimesZeroCalculator();
 
         $result = $calculator->calculate(12, 23, 242);
 

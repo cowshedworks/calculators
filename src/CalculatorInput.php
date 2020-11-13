@@ -18,7 +18,7 @@ class CalculatorInput
         if (array_key_exists($inputKey, $this->input) === false) {
             throw new InvalidArgumentException("{$inputKey} not found in input parameters");
         }
-            
+
         return $this->input[$inputKey];
     }
 }

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
-use CowshedWorks\Calculators\Calculator;
 use Exception;
 
 class CalculatorFactory
@@ -18,10 +17,10 @@ class CalculatorFactory
     {
         $this->registerStandardLibrary();
     }
-    
+
     public static function make(): self
     {
-        return new self;
+        return new self();
     }
 
     public function register(string $name, string $calculatorClass): void
@@ -39,12 +38,12 @@ class CalculatorFactory
             throw new Exception("Calculator {$name} is not registered with the factory");
         }
 
-        return new $this->calculators[$name];
+        return new $this->calculators[$name]();
     }
 
     private function registerStandardLibrary(): void
     {
-        foreach($this->standardLibrary as $name => $class) {
+        foreach ($this->standardLibrary as $name => $class) {
             $this->register($name, $class);
         }
     }

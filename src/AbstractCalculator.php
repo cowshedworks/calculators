@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
-use CowshedWorks\Calculators\CalculatorInput;
-use CowshedWorks\Calculators\CalculatorResult;
 use InvalidArgumentException;
 
 abstract class AbstractCalculator

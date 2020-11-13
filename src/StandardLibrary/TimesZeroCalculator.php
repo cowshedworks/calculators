@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators\StandardLibrary;
 
-use CowshedWorks\Calculators\CalculatorInput;
+use CowshedWorks\Calculators\AbstractCalculator;
 use CowshedWorks\Calculators\CalculatorResult;
 use CowshedWorks\Calculators\IntegerResult;
-use CowshedWorks\Calculators\AbstractCalculator;
 
 class TimesZeroCalculator extends AbstractCalculator
 {
@@ -19,7 +18,7 @@ class TimesZeroCalculator extends AbstractCalculator
 
     public function describe(): string
     {
-        return "Returns the input multiplied by zero, useful.";
+        return 'Returns the input multiplied by zero, useful.';
     }
 
     public function handle(): CalculatorResult
