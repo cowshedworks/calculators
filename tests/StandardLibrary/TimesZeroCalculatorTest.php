@@ -44,7 +44,7 @@ class TimesZeroCalculatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Calculator was expecting 1 but got 3');
-        
+
         $calculator = new TimesZeroCalculator();
 
         $result = $calculator->calculate(12, 23, 242);

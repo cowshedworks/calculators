@@ -2,9 +2,9 @@
 
 namespace CowshedWorks\Calculators\Tests;
 
+use CowshedWorks\Calculators\AbstractCalculator;
 use CowshedWorks\Calculators\CalculatorFactory;
 use CowshedWorks\Calculators\StandardLibrary\TimesZeroCalculator;
-use CowshedWorks\Calculators\AbstractCalculator;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
