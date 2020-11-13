@@ -1,0 +1,28 @@
+{
+    "name": "cowshedworks/calculators",
+    "description": "A collection of useful calculators",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gavin Phillips",
+            "email": "gavin@cowshedworks.co.uk"
+        }
+    ],
+    "require": {
+        "php": "7.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CowshedWorks\\Calculators\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CowshedWorks\\Calculators\\Tests\\": "tests/"
+        }
+    }
+}
