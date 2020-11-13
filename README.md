@@ -2,6 +2,8 @@
 
 Calculators is a simple calculators factory
 
+**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap
+
 ## Installation
 
 Use the package manager [composer](https://getcomposer.org/) to install.
