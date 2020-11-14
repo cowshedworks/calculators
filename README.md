@@ -17,7 +17,7 @@ composer require cowshedworks/calculators
 ```php
 use CowshedWorks\Calculators\CalculatorFactory;
 
-$factory = new CalculatorFactory();
+$factory = CalculatorFactory::new();
 $calculator = $factory->get('timesZero');
 $result = $calculator->calculate(400);
 

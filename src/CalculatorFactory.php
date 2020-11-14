@@ -19,7 +19,7 @@ class CalculatorFactory
         $this->registerStandardLibrary();
     }
 
-    public static function make(): self
+    public static function new(): self
     {
         return new self();
     }
