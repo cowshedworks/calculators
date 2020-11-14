@@ -14,6 +14,8 @@ abstract class AbstractCalculator
 
     abstract protected function getParameters(): array;
 
+    abstract protected function handle(): CalculatorResult;
+
     public function calculate(): CalculatorResult
     {
         $this->input = new CalculatorInput(
@@ -39,6 +41,4 @@ abstract class AbstractCalculator
 
         return array_combine($this->getParameters(), $inputParameters);
     }
-
-    abstract protected function handle(): CalculatorResult;
 }
