@@ -10,7 +10,7 @@ class InputValidator
 {
     public function validate(array $input): void
     {
-        foreach($input as $validateMethod => $inputValue) {
+        foreach ($input as $validateMethod => $inputValue) {
             $this->{$validateMethod}($inputValue);
         }
     }
@@ -21,6 +21,6 @@ class InputValidator
             return;
         }
 
-        throw new InvalidArgumentException("Parameter was incorrect type, expecting numeric recieved " . gettype($value));
+        throw new InvalidArgumentException('Parameter was incorrect type, expecting numeric recieved '.gettype($value));
     }
 }
