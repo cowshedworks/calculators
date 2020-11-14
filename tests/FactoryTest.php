@@ -14,7 +14,7 @@ class FactoryTest extends TestCase
     public function it_returns_the_expected_calculator()
     {
         $factory = CalculatorFactory::new();
-        $calculator = $factory->get('timesZero');
+        $calculator = $factory->make('timesZero');
 
         $this->assertInstanceOf(AbstractCalculator::class, $calculator);
         $this->assertInstanceOf(TimesZeroCalculator::class, $calculator);
@@ -37,6 +37,6 @@ class FactoryTest extends TestCase
         $this->expectExceptionMessage('Calculator nonExistentCalculator is not registered with the factory');
 
         $factory = CalculatorFactory::new();
-        $factory->get('nonExistentCalculator');
+        $factory->make('nonExistentCalculator');
     }
 }
