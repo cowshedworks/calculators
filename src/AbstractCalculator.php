@@ -23,21 +23,21 @@ abstract class AbstractCalculator
         return $this->handle();
     }
 
-    private function mapInput(array $inputArgs = []): array
+    private function mapInput(array $inputParameters = []): array
     {
-        $totalInputArgs = count($inputArgs);
+        $totalInputParameters = count($inputParameters);
         $calculatorParameters = $this->getParameters();
         $totalExpectedParameters = count($calculatorParameters);
 
-        if ($totalInputArgs === 0) {
+        if ($totalInputParameters === 0) {
             throw new InvalidArgumentException('Nothing was passed to the calculator');
         }
 
-        if ($totalInputArgs !== $totalExpectedParameters) {
-            throw new InvalidArgumentException("Calculator was expecting {$totalExpectedParameters} but got {$totalInputArgs}");
+        if ($totalInputParameters !== $totalExpectedParameters) {
+            throw new InvalidArgumentException("Calculator was expecting {$totalExpectedParameters} but got {$totalInputParameters}");
         }
 
-        return array_combine($this->getParameters(), $inputArgs);
+        return array_combine($this->getParameters(), $inputParameters);
     }
 
     abstract protected function handle(): CalculatorResult;
