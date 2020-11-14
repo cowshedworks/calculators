@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators\StandardLibrary;
 
-use CowshedWorks\Calculators\AbstractCalculator;
+use CowshedWorks\Calculators\Calculator;
 use CowshedWorks\Calculators\CalculatorResult;
 use CowshedWorks\Calculators\IntegerResult;
 
-class TimesZeroCalculator extends AbstractCalculator
+class TimesZeroCalculator extends Calculator
 {
     public function getParameters(): array
     {
         return [
-            'toMultiply',
+            'toMultiply' => 'numeric',
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace CowshedWorks\Calculators\Tests;
 
+use CowshedWorks\Calculators\CalculatorFactory;
 use CowshedWorks\Calculators\StandardLibrary\TimesZeroCalculator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +12,7 @@ class TimesZeroCalculatorTest extends TestCase
     /** @test */
     public function it_describes_itself()
     {
-        $calculator = new TimesZeroCalculator();
+        $calculator = $this->getCalcuator();
 
         $this->assertEquals('Returns the input multiplied by zero, useful.', $calculator->describe());
     }
@@ -19,7 +20,7 @@ class TimesZeroCalculatorTest extends TestCase
     /** @test */
     public function it_returns_the_expected_result()
     {
-        $calculator = new TimesZeroCalculator();
+        $calculator = $this->getCalcuator();
 
         $result = $calculator->calculate(34);
 
@@ -32,7 +33,7 @@ class TimesZeroCalculatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Nothing was passed to the calculator');
 
-        $calculator = new TimesZeroCalculator();
+        $calculator = $this->getCalcuator();
 
         $result = $calculator->calculate();
 
@@ -45,10 +46,26 @@ class TimesZeroCalculatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Calculator was expecting 1 but got 3');
 
-        $calculator = new TimesZeroCalculator();
+        $calculator = $this->getCalcuator();
 
         $result = $calculator->calculate(12, 23, 242);
 
         $this->assertEquals(0, $result->get());
+    }
+
+    /** @test */
+    public function it_throws_with_incorrect_parameter_types()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Parameter was incorrect type, expecting numeric recieved string');
+
+        $calculator = $this->getCalcuator();
+
+        $result = $calculator->calculate('some text');
+    }
+
+    private function getCalcuator(): TimesZeroCalculator
+    {
+        return CalculatorFactory::new()->make('timesZero');
     }
 }

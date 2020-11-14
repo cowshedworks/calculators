@@ -6,15 +6,22 @@ namespace CowshedWorks\Calculators;
 
 use InvalidArgumentException;
 
-abstract class AbstractCalculator
+abstract class Calculator
 {
     protected CalculatorInput $input;
+
+    protected InputValidator $validator;
 
     abstract public function describe(): string;
 
     abstract protected function getParameters(): array;
 
     abstract protected function handle(): CalculatorResult;
+
+    public function __construct(InputValidator $validator)
+    {
+        $this->validator = $validator;
+    }
 
     public function calculate(): CalculatorResult
     {
@@ -39,6 +46,10 @@ abstract class AbstractCalculator
             throw new InvalidArgumentException("Calculator was expecting {$totalExpectedParameters} but got {$totalInputParameters}");
         }
 
-        return array_combine($this->getParameters(), $inputParameters);
+        $this->validator->validate(
+            array_combine($this->getParameters(), $inputParameters)
+        );
+
+        return array_combine(array_keys($this->getParameters()), $inputParameters);
     }
 }

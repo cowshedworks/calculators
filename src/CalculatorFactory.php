@@ -33,13 +33,13 @@ class CalculatorFactory
         $this->calculators[$name] = $calculatorClass;
     }
 
-    public function make(string $name): AbstractCalculator
+    public function make(string $name): Calculator
     {
         if ($this->calculatorIsRegistered($name) === false) {
             throw new Exception("Calculator {$name} is not registered with the factory");
         }
 
-        return new $this->calculators[$name]();
+        return new $this->calculators[$name](new InputValidator());
     }
 
     private function registerStandardLibrary(): void

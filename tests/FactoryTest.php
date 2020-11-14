@@ -2,7 +2,7 @@
 
 namespace CowshedWorks\Calculators\Tests;
 
-use CowshedWorks\Calculators\AbstractCalculator;
+use CowshedWorks\Calculators\Calculator;
 use CowshedWorks\Calculators\CalculatorFactory;
 use CowshedWorks\Calculators\StandardLibrary\TimesZeroCalculator;
 use Exception;
@@ -16,7 +16,7 @@ class FactoryTest extends TestCase
         $factory = CalculatorFactory::new();
         $calculator = $factory->make('timesZero');
 
-        $this->assertInstanceOf(AbstractCalculator::class, $calculator);
+        $this->assertInstanceOf(Calculator::class, $calculator);
         $this->assertInstanceOf(TimesZeroCalculator::class, $calculator);
     }
 
