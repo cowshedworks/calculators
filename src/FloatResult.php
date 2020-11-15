@@ -13,7 +13,7 @@ class FloatResult extends CalculatorResult
         $this->result = $result;
     }
 
-    public function get(): int
+    public function get(): float
     {
         return $this->result;
     }
