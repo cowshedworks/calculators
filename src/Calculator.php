@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
+use func_get_args;
 use InvalidArgumentException;
 
 abstract class Calculator
@@ -25,31 +26,32 @@ abstract class Calculator
 
     public function calculate(): CalculatorResult
     {
-        $this->input = new CalculatorInput(
-            $this->mapInput(func_get_args())
-        );
+        $inputParameters = func_get_args();
+
+        $calculatorParameters = $this->getParameters();
+
+        $mappedParameters = $this->mapInput($calculatorParameters, $inputParameters);
+
+        $this->validator->validate($calculatorParameters, $inputParameters);
+
+        $this->input = new CalculatorInput($mappedParameters);
 
         return $this->handle();
     }
 
-    private function mapInput(array $inputParameters = []): array
+    private function mapInput(array $calculatorParameters, array $inputParameters = []): array
     {
         $totalInputParameters = count($inputParameters);
-        $calculatorParameters = $this->getParameters();
-        $totalExpectedParameters = count($calculatorParameters);
+        $totalCalculatorParameters = count($calculatorParameters);
 
         if ($totalInputParameters === 0) {
             throw new InvalidArgumentException('Nothing was passed to the calculator');
         }
 
-        if ($totalInputParameters !== $totalExpectedParameters) {
-            throw new InvalidArgumentException("Calculator was expecting {$totalExpectedParameters} but got {$totalInputParameters}");
+        if ($totalInputParameters !== $totalCalculatorParameters) {
+            throw new InvalidArgumentException("Calculator was expecting {$totalCalculatorParameters} but got {$totalInputParameters}");
         }
 
-        $this->validator->validate(
-            array_combine($this->getParameters(), $inputParameters)
-        );
-
-        return array_combine(array_keys($this->getParameters()), $inputParameters);
+        return array_combine(array_keys($calculatorParameters), $inputParameters);
     }
 }

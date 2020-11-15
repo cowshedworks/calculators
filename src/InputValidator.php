@@ -8,9 +8,9 @@ use InvalidArgumentException;
 
 class InputValidator
 {
-    public function validate(array $input): void
+    public function validate(array $calculatorParameters, array $inputParameters): void
     {
-        foreach ($input as $validateMethod => $inputValue) {
+        foreach (array_combine($calculatorParameters, $inputParameters) as $validateMethod => $inputValue) {
             $this->{$validateMethod}($inputValue);
         }
     }
