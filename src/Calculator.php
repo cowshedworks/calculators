@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
-use func_get_args;
 use InvalidArgumentException;
 
 abstract class Calculator
@@ -52,6 +51,9 @@ abstract class Calculator
             throw new InvalidArgumentException("Calculator was expecting {$totalCalculatorParameters} but got {$totalInputParameters}");
         }
 
-        return array_combine(array_keys($calculatorParameters), $inputParameters);
+        return array_combine(
+            array_keys($calculatorParameters),
+            $inputParameters
+        );
     }
 }
