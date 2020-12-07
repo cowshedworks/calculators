@@ -8,9 +8,9 @@ class IntegerResult extends CalculatorResult
 {
     protected int $result;
 
-    public function __construct(int $result)
+    public function __construct($result)
     {
-        $this->result = $result;
+        $this->result = (int) $result;
     }
 
     public function get(): int

@@ -8,9 +8,9 @@ class FloatResult extends CalculatorResult
 {
     protected float $result;
 
-    public function __construct(float $result)
+    public function __construct($result)
     {
-        $this->result = $result;
+        $this->result = (float) $result;
     }
 
     public function get(): float
