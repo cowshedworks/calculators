@@ -1,8 +1,8 @@
 # Calculators
 
-Calculators is a simple calculators factory
+Calculators is a factory of calculators for non-trivial calculations. It's purpose is to remove the need to implement and test algorithms otherwise not implemented in the PHP standard library.
 
-**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap
+**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap in a range of categories including finance, scienfific and language.
 
 ## Installation
 
