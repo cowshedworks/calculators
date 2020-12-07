@@ -56,4 +56,9 @@ abstract class Calculator
             $inputParameters
         );
     }
+
+    protected function throwInvalidArgument($message)
+    {
+        throw new InvalidArgumentException($message);
+    }
 }
