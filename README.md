@@ -1,8 +1,8 @@
 # Calculators
 
-Calculators is a factory of calculators for non-trivial calculations. It's purpose is to remove the need to implement and test algorithms otherwise not implemented in the PHP standard library.
+Calculators is a factory of calculators. It's purpose is to provide common calculations so you don't have to write them in your code. The aim is to be able to compose calculators into an algorithm using a pipeline.
 
-**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap in a range of categories including finance, scienfific and language.
+**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap in a range of categories including finance, scientific and language.
 
 ## Installation
 
@@ -22,6 +22,16 @@ $calculator = $factory->make('timesZero');
 $result = $calculator->calculate(400);
 
 echo $result->get();
+
+
+use CowshedWorks\Calculators\Composition;
+
+$composition = (new Composition())
+    ->use('multipliedBy')->with(['by' => 100])
+    ->use('timesZero')
+    ->build();
+
+echo $composition(1000);
 //prints 0
 ```
 

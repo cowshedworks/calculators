@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class CalculatorCompositionTest extends TestCase
 {
     /** @test */
-    public function it_stores_and_retrieves_input_parameters()
+    public function it_can_compose_calculators()
     {
         $composition = (new Composition())
             ->use('multipliedBy')->with(['by' => 100])
