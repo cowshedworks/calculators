@@ -11,6 +11,7 @@ class CalculatorFactory
     protected array $standardLibrary = [
         'timesZero' => \CowshedWorks\Calculators\StandardLibrary\TimesZeroCalculator::class,
         'percentOf' => \CowshedWorks\Calculators\StandardLibrary\PercentOfCalculator::class,
+        'multipliedBy' => \CowshedWorks\Calculators\StandardLibrary\MultipliedByCalculator::class,
     ];
 
     protected array $calculators = [];
