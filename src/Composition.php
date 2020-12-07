@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
-use CowshedWorks\Calculators\CalculatorFactory;
-
 class Composition
 {
     protected CalculatorFactory $factory;
-    
+
     protected array $composition;
 
     public function __construct()
@@ -21,7 +19,7 @@ class Composition
     {
         $this->composition[] = [
             'calculator' => $this->factory->make($calculator),
-            'params' => []
+            'params' => [],
         ];
 
         return $this;
@@ -34,9 +32,9 @@ class Composition
         return $this;
     }
 
-    public function build(): Callable
+    public function build(): callable
     {
-        return function() {
+        return function () {
             $result = $this->composition[0]['calculator']->calculate(
                 ...array_values(array_merge(func_get_args(), $this->composition[0]['params']))
             );
