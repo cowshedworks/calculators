@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Calculators;
 
-use CowshedWorks\Calculators\Calculator;
-use CowshedWorks\Calculators\CalculatorResult;
-
 class PipedCalculator
 {
     protected Calculator $calculator;
@@ -24,7 +21,7 @@ class PipedCalculator
     }
 
     public function runCalculation($input): CalculatorResult
-    {   
+    {
         return $this->calculator->calculate(
             ...$this->mergeParameters($input)
         );
