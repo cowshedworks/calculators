@@ -24,14 +24,14 @@ $result = $calculator->calculate(400);
 echo $result->get();
 
 
-use CowshedWorks\Calculators\Composition;
+use CowshedWorks\Calculators\Pipeline;
 
-$composition = (new Composition())
-    ->use('multipliedBy')->with(['by' => 100])
-    ->use('timesZero')
+$calculation = (new Pipeline())
+    ->multipliedBy(['number' => 'input', 'by' => 100])
+    ->timesZero('[toMultiply' => 'input'])
     ->build();
 
-echo $composition(1000);
+echo $calculation(1000);
 //prints 0
 ```
 
