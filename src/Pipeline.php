@@ -37,7 +37,6 @@ class Pipeline
         // resolve the provided parameters and merge them with the chained value
 
         return function () {
-
             $carry = func_get_args();
 
             foreach ($this->pipeline as $pipedCalculator) {
