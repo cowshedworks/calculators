@@ -22,17 +22,17 @@ $calculator = $factory->make('timesZero');
 $result = $calculator->calculate(400);
 
 echo $result->get();
-
+//prints 0
 
 use CowshedWorks\Calculators\Pipeline;
 
 $calculation = (new Pipeline())
     ->multipliedBy(['number' => 'input', 'by' => 100])
-    ->timesZero('[toMultiply' => 'input'])
+    ->percentOf(['percentage' => 10, 'of' => 'input'])
     ->build();
 
-echo $calculation(1000);
-//prints 0
+echo $calculation(10);
+//prints 100
 ```
 
 ## Contributing
