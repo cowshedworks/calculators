@@ -18,13 +18,13 @@ composer require cowshedworks/calculators
 use CowshedWorks\Calculators\Calculation;
 
 $calculator = (new CalculationFactory())
-    ->using($first)
+    ->using('p1')
     ->multiplyBy(10)
-    ->addTo($second)
+    ->multiplyBy('p2')
     ->build();
 
 $calculator(10, 30);
-// prints 130
+// prints 3000
 ```
 
 ## Contributing
