@@ -34,7 +34,7 @@ class Calculation
             $counter = 1;
             $params = [];
             foreach (func_get_args() as $index => $parameter) {
-                $params['P'.($index+1)] = $parameter;
+                $params['P'.($index + 1)] = $parameter;
             }
             // in here we need to assign the parameters that we receive
             // and then execure the opCodes using the supplied parameters
@@ -56,14 +56,14 @@ class Calculation
 
             $currentValue = 0;
             $currentToken = null;
-            foreach($this->runCodes as $runIndex => $currentOpCode) {
+            foreach ($this->runCodes as $runIndex => $currentOpCode) {
                 if (\is_numeric($currentOpCode)) {
                     if ($runIndex === 0) {
                         $currentValue = $currentOpCode;
                         continue;
                     }
                 }
-                
+
                 if ($this->isToken($currentOpCode)) {
                     $currentToken = $currentOpCode;
 
@@ -77,7 +77,7 @@ class Calculation
         };
     }
 
-    protected function calculateWithToken($token, $currentValue, $currentOpCode) 
+    protected function calculateWithToken($token, $currentValue, $currentOpCode)
     {
         if ($token === '*') {
             return $currentValue * $currentOpCode;
