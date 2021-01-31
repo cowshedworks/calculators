@@ -11,7 +11,6 @@ class CalculationFactory
     public function __construct()
     {
         $this->calculation = new Calculation;
-        
     }
 
     public function using(string $parameter): self
