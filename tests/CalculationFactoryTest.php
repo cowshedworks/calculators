@@ -134,4 +134,19 @@ class CalculationFactoryTest extends TestCase
 
         $this->assertEquals(31.41592653589793, $circumferenceFromDiameter(10));
     }
+
+    /** @test */
+    public function it_can_build_a_nested_calculations()
+    {
+        $radiusFromCircumference = (new CalculationFactory())
+            ->using('p1')
+            ->divideBy(
+                (new CalculationFactory())
+                    ->using(pi())
+                    ->multiplyBy(2)
+            )
+            ->build();
+
+        $this->assertEquals(1.5915494309189497, $radiusFromCircumference(10));
+    }
 }

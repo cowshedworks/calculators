@@ -19,6 +19,11 @@ class Calculation
         $this->opCodes[] = strtoupper($parameter);
     }
 
+    public function addFactory($factory): void
+    {
+        $this->opCodes[] = $factory->build()();
+    }
+
     public function isParameter($value): bool
     {
         if (false === is_string($value)) {
@@ -26,6 +31,11 @@ class Calculation
         }
 
         return substr($value, 0, 1) === 'P' || substr($value, 0, 1) === 'p';
+    }
+
+    public function isFactory($value): bool
+    {
+        return $value instanceof CalculationFactory;
     }
 
     public function getCallable(): callable

@@ -33,6 +33,18 @@ $circumferenceFromDiameter = (new CalculationFactory())
 
 $circumferenceFromDiameter(10)
 // prints 31.41592653589793
+
+$radiusFromCircumference = (new CalculationFactory())
+    ->using('p1')
+    ->divideBy(
+        (new CalculationFactory())
+            ->using(pi())
+            ->multiplyBy(2)
+    )
+    ->build();
+
+$radiusFromCircumference(10)
+1.5915494309189497
 ```
 
 ## Contributing

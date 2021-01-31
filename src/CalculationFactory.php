@@ -22,7 +22,7 @@ class CalculationFactory
     {
         $this->calculation->addOpcode('SUBTRACT');
 
-        $this->addOpcodeOrParameter($number);
+        $this->addOpcode($number);
 
         return $this;
     }
@@ -31,7 +31,7 @@ class CalculationFactory
     {
         $this->calculation->addOpcode('ADD');
 
-        $this->addOpcodeOrParameter($number);
+        $this->addOpcode($number);
 
         return $this;
     }
@@ -40,7 +40,7 @@ class CalculationFactory
     {
         $this->calculation->addOpcode('TIMES');
 
-        $this->addOpcodeOrParameter($number);
+        $this->addOpcode($number);
 
         return $this;
     }
@@ -49,15 +49,21 @@ class CalculationFactory
     {
         $this->calculation->addOpcode('DIVIDE');
 
-        $this->addOpcodeOrParameter($number);
+        $this->addOpcode($number);
 
         return $this;
     }
 
-    protected function addOpcodeOrParameter($number): void
+    protected function addOpcode($number): void
     {
         if ($this->calculation->isParameter($number)) {
             $this->calculation->addParameter($number);
+
+            return;
+        }
+
+        if ($this->calculation->isFactory($number)) {
+            $this->calculation->addFactory($number);
 
             return;
         }
