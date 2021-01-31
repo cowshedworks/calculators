@@ -18,7 +18,7 @@ composer require cowshedworks/calculators
 use CowshedWorks\Calculators\Calculation;
 
 $calculator = (new CalculationFactory())
-    ->using($first))
+    ->using($first)
     ->multiplyBy(10)
     ->addTo($second)
     ->build();
