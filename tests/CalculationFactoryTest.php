@@ -99,4 +99,17 @@ class CalculationFactoryTest extends TestCase
 
         $this->assertEquals(890, $calculator(1000));
     }
+
+    /** @test */
+    public function it_can_build_a_multiplier_and_adder_and_subtractor()
+    {
+        $calculator = (new CalculationFactory())
+            ->using('p1')
+            ->multiplyBy('p2')
+            ->add(1000)
+            ->subtract(500)
+            ->build();
+
+        $this->assertEquals(600, $calculator(10, 10));
+    }
 }
