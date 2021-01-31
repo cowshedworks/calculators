@@ -35,7 +35,7 @@ class Calculation
             // and then make the calculation using the opcodes
             $counter = 1;
             $params = [];
-            
+
             foreach (func_get_args() as $index => $parameter) {
                 $params['P'.($index + 1)] = $parameter;
             }
