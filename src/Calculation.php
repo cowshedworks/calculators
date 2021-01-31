@@ -71,18 +71,22 @@ class Calculation
         };
     }
 
-    protected function calculateWithToken($token, $currentValue, $currentOpCode)
+    protected function calculateWithToken($token, $currentValue, $operand)
     {
         if ($token === 'TIMES') {
-            return $currentValue * $currentOpCode;
+            return $currentValue * $operand;
         }
 
-        return $currentOpCode;
+        if ($token === 'ADD') {
+            return $currentValue + $operand;
+        }
+
+        return $currentValue;
     }
 
     protected function isToken($value)
     {
-        $tokens = ['TIMES', 'PLUS', 'MINUS', 'DIVIDE'];
+        $tokens = ['TIMES', 'ADD', 'MINUS', 'DIVIDE'];
 
         return in_array($value, $tokens);
     }

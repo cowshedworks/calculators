@@ -17,6 +17,21 @@ class CalculationFactory
 
         return $this;
     }
+    
+    public function add($number): self
+    {
+        $this->calculation->addOpcode('ADD');
+
+        if ($this->calculation->isParameter($number)) {
+            $this->calculation->addParameter($number);
+
+            return $this;
+        }
+
+        $this->calculation->addOpcode($number);
+
+        return $this;
+    }
 
     public function multiplyBy($number): self
     {
