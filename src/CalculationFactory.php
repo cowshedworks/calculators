@@ -17,18 +17,21 @@ class CalculationFactory
 
         return $this;
     }
+
+    public function subtract($number): self
+    {
+        $this->calculation->addOpcode('SUBTRACT');
+
+        $this->addOpcodeOrParameter($number);
+
+        return $this;
+    }
     
     public function add($number): self
     {
         $this->calculation->addOpcode('ADD');
 
-        if ($this->calculation->isParameter($number)) {
-            $this->calculation->addParameter($number);
-
-            return $this;
-        }
-
-        $this->calculation->addOpcode($number);
+        $this->addOpcodeOrParameter($number);
 
         return $this;
     }
@@ -37,15 +40,20 @@ class CalculationFactory
     {
         $this->calculation->addOpcode('TIMES');
 
+        $this->addOpcodeOrParameter($number);
+
+        return $this;
+    }
+
+    protected function addOpcodeOrParameter($number): void
+    {
         if ($this->calculation->isParameter($number)) {
             $this->calculation->addParameter($number);
 
-            return $this;
+            return;
         }
 
         $this->calculation->addOpcode($number);
-
-        return $this;
     }
 
     public function build(): callable

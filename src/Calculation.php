@@ -81,12 +81,16 @@ class Calculation
             return $currentValue + $operand;
         }
 
+        if ($token === 'SUBTRACT') {
+            return $currentValue - $operand;
+        }
+
         return $currentValue;
     }
 
     protected function isToken($value)
     {
-        $tokens = ['TIMES', 'ADD', 'MINUS', 'DIVIDE'];
+        $tokens = ['TIMES', 'ADD', 'SUBTRACT', 'DIVIDE'];
 
         return in_array($value, $tokens);
     }

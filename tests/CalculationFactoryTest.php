@@ -76,4 +76,27 @@ class CalculationFactoryTest extends TestCase
 
         $this->assertEquals(1100, $calculator(10, 10));
     }
+
+    /** @test */
+    public function it_can_build_a_subtractor()
+    {
+        $calculator = (new CalculationFactory())
+            ->using('p1')
+            ->subtract(10)
+            ->build();
+
+        $this->assertEquals(10, $calculator(20));
+    }
+
+    /** @test */
+    public function it_can_build_a_more_complicated_subtractor()
+    {
+        $calculator = (new CalculationFactory())
+            ->using('p1')
+            ->subtract(10)
+            ->subtract(100)
+            ->build();
+
+        $this->assertEquals(890, $calculator(1000));
+    }
 }
