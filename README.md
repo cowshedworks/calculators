@@ -15,7 +15,7 @@ composer require cowshedworks/calculators
 ## Usage
 
 ```php
-use CowshedWorks\Calculators\Calculation;
+use CowshedWorks\Calculators\CalculationFactory;
 
 $calculator = (new CalculationFactory())
     ->using('p1')
