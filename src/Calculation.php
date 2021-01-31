@@ -85,6 +85,10 @@ class Calculation
             return $currentValue - $operand;
         }
 
+        if ($token === 'DIVIDE') {
+            return $currentValue / $operand;
+        }
+
         return $currentValue;
     }
 

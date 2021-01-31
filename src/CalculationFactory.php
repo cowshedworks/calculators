@@ -45,6 +45,15 @@ class CalculationFactory
         return $this;
     }
 
+    public function divideBy($number): self
+    {
+        $this->calculation->addOpcode('DIVIDE');
+
+        $this->addOpcodeOrParameter($number);
+
+        return $this;
+    }
+
     protected function addOpcodeOrParameter($number): void
     {
         if ($this->calculation->isParameter($number)) {

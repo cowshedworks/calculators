@@ -89,6 +89,17 @@ class CalculationFactoryTest extends TestCase
     }
 
     /** @test */
+    public function it_can_build_a_divider()
+    {
+        $calculator = (new CalculationFactory())
+            ->using('p1')
+            ->divideBy(2)
+            ->build();
+
+        $this->assertEquals(5, $calculator(10));
+    }
+
+    /** @test */
     public function it_can_build_a_more_complicated_subtractor()
     {
         $calculator = (new CalculationFactory())
