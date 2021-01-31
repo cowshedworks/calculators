@@ -26,7 +26,7 @@ class CalculationFactory
 
         return $this;
     }
-    
+
     public function add($number): self
     {
         $this->calculation->addOpcode('ADD');
