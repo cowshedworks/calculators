@@ -31,46 +31,40 @@ class Calculation
     public function getCallable(): callable
     {
         return function () {
+            // assign the parameters that we receive to opcode values
+            // and then make the calculation using the opcodes
             $counter = 1;
             $params = [];
+            
             foreach (func_get_args() as $index => $parameter) {
                 $params['P'.($index + 1)] = $parameter;
-            }
-            // in here we need to assign the parameters that we receive
-            // and then execure the opCodes using the supplied parameters
-            foreach ($this->opCodes as $opLine) {
-                if (is_string($opLine) && $this->isParameter($opLine)) {
-                    $this->runCodes[] = $params[$opLine];
-
-                    continue;
-                }
-
-                if (is_string($opLine) && $opLine === 'TIMES') {
-                    $this->runCodes[] = '*';
-
-                    continue;
-                }
-
-                $this->runCodes[] = $opLine;
             }
 
             $currentValue = 0;
             $currentToken = null;
-            foreach ($this->runCodes as $runIndex => $currentOpCode) {
-                if (\is_numeric($currentOpCode)) {
-                    if ($runIndex === 0) {
-                        $currentValue = $currentOpCode;
+            foreach ($this->opCodes as $opCodeIndex => $opLine) {
+
+                // Convert parameters to actual values
+                if (is_string($opLine) && $this->isParameter($opLine)) {
+                    $opLine = $params[$opLine];
+                }
+
+                // Assign current value if first iteration
+                if (\is_numeric($opLine)) {
+                    if ($opCodeIndex === 0) {
+                        $currentValue = $opLine;
+
                         continue;
                     }
                 }
 
-                if ($this->isToken($currentOpCode)) {
-                    $currentToken = $currentOpCode;
+                if ($this->isToken($opLine)) {
+                    $currentToken = $opLine;
 
                     continue;
                 }
 
-                $currentValue = $this->calculateWithToken($currentToken, $currentValue, $currentOpCode);
+                $currentValue = $this->calculateWithToken($currentToken, $currentValue, $opLine);
             }
 
             return $currentValue;
@@ -79,7 +73,7 @@ class Calculation
 
     protected function calculateWithToken($token, $currentValue, $currentOpCode)
     {
-        if ($token === '*') {
+        if ($token === 'TIMES') {
             return $currentValue * $currentOpCode;
         }
 
@@ -88,7 +82,7 @@ class Calculation
 
     protected function isToken($value)
     {
-        $tokens = ['*', '+', '-', '/'];
+        $tokens = ['TIMES', 'PLUS', 'MINUS', 'DIVIDE'];
 
         return in_array($value, $tokens);
     }
