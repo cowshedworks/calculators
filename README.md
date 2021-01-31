@@ -25,6 +25,14 @@ $calculator = (new CalculationFactory())
 
 $calculator(10, 30);
 // prints 3000
+
+$circumferenceFromDiameter = (new CalculationFactory())
+    ->using('p1')
+    ->multiplyBy(pi())
+    ->build();
+
+$circumferenceFromDiameter(10)
+// prints 31.41592653589793
 ```
 
 ## Contributing

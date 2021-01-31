@@ -123,4 +123,15 @@ class CalculationFactoryTest extends TestCase
 
         $this->assertEquals(600, $calculator(10, 10));
     }
+
+    /** @test */
+    public function it_can_build_a_circumference_calculator()
+    {
+        $circumferenceFromDiameter = (new CalculationFactory())
+            ->using('p1')
+            ->multiplyBy(pi())
+            ->build();
+
+        $this->assertEquals(31.41592653589793, $circumferenceFromDiameter(10));
+    }
 }
