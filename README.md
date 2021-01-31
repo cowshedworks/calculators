@@ -1,8 +1,8 @@
 # Calculators
 
-Calculators is a factory of calculators. It's purpose is to provide common calculations so you don't have to write them in your code. The aim is to be able to compose calculators into an algorithm using a pipeline.
+Calculators is a factory for building calculations in a fluent way
 
-**PLEASE NOTE** this is very WIP at the moment, calculators will start being added asap in a range of categories including finance, scientific and language.
+**PLEASE NOTE** this is very WIP at the moment, it is really a way to test using packagist to release a PHP package.
 
 ## Installation
 
@@ -15,24 +15,16 @@ composer require cowshedworks/calculators
 ## Usage
 
 ```php
-use CowshedWorks\Calculators\CalculatorFactory;
+use CowshedWorks\Calculators\Calculation;
 
-$factory = CalculatorFactory::new();
-$calculator = $factory->make('timesZero');
-$result = $calculator->calculate(400);
-
-echo $result->get();
-//prints 0
-
-use CowshedWorks\Calculators\Pipeline;
-
-$calculation = (new Pipeline())
-    ->multipliedBy(['number' => 'input', 'by' => 100])
-    ->percentOf(['percentage' => 10, 'of' => 'input'])
+$calculator = (new CalculationFactory())
+    ->using($first))
+    ->multiplyBy(10)
+    ->addTo($second)
     ->build();
 
-echo $calculation(10);
-//prints 100
+$calculator(10, 30);
+// prints 130
 ```
 
 ## Contributing
