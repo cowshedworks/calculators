@@ -53,7 +53,6 @@ class Calculation
             $currentValue = 0;
             $currentToken = null;
             foreach ($this->opCodes as $opCodeIndex => $opLine) {
-
                 // Convert parameters to actual values
                 if (is_string($opLine) && $this->isParameter($opLine)) {
                     $opLine = $params[$opLine];
