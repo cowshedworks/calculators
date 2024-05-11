@@ -6,6 +6,8 @@ namespace CowshedWorks\Calculators;
 
 class CalculationFactory
 {
+    private Calculation $calculation;
+
     public function __construct()
     {
         $this->calculation = new Calculation;
